@@ -53,13 +53,9 @@ function App() {
           <header>
             <h1>Список задач</h1>
             <AddTodo onCreate={addTodo}/>
-            {!todos.length ? <p className={'list-empty'}>Список задач пуст</p> : <></>}
+            {!todos.length && <p className={'list-empty'}>Список задач пуст</p>}
           </header>
-          {todos.length ? (
             <TodoList todos={todos} onToggle={toggleTodo}/>
-          ) : (
-            <></>
-          )}
         </div>
       </div>
     </Context.Provider>
