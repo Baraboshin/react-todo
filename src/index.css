@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,8 +24,33 @@ code {
 }
 .list {
   width: 50%;
-  margin: 50px;
-  min-height: 100px;
+}
+
+.list header {
+  padding: 10px;
+  margin: 10px 0;
   background: white;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.list list-empty {
+  padding: 0;
+  margin: 0;
+}
+
+.list header h1 {
+  margin: 0 0 10px 0 ;
+}
+.todo-title {
+  flex-grow: 1;
+  cursor: default;
+  word-break: break-word;
+}
+.done {
+  color: darkgray;
+}
+
+.btn-primary {
+  color: white;
+  background: #0095ff;
 }
