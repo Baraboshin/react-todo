@@ -50,7 +50,34 @@ code {
   color: darkgray;
 }
 
+.btn {
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
 .btn-primary {
-  color: white;
-  background: #0095ff;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-primary:active {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+}
+.btn-primary:disabled {
+  color: #fff;
+  pointer-events: none;
+  opacity: .65;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus {
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13 110 253 0.25);
 }

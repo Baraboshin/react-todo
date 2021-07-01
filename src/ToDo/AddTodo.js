@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const style = {
   form: {
     display: 'flex',
-    margin: '10px 10px 10px 0',
+    margin: '10px 0',
   },
   input: {
     flexGrow: 1,
@@ -31,8 +31,13 @@ function AddTodo({ onCreate }) {
 
   return(
     <form style={style.form} onSubmit={submitHandler}>
-      <input style={style.input} value={value} onChange={event => setValue(event.target.value)}/>
-      <button type="submit" className={'btn-primary'} disabled={!value}>Добавить задачу</button>
+      <input
+        className={'form-control'}
+        style={style.input}
+        value={value}
+        onChange={event => setValue(event.target.value)}
+      />
+      <button type="submit" className='btn btn-primary' disabled={!value}>Добавить задачу</button>
     </form>
   )
 }
