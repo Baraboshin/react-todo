@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import PropTypes from "prop-types"
 import Context from "../context";
+import {faTimes, faPencilAlt} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const style = {
   li: {
@@ -14,7 +16,23 @@ const style = {
   input: {
     marginRight: '10px',
   },
+  buttonEdit: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '20px',
+    height: '20px',
+    marginLeft: '10px',
+    border: 'none',
+    color: 'white',
+    background: 'green',
+    borderRadius: '50%',
+    cursor: 'pointer',
+  },
   buttonRemove: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '20px',
     height: '20px',
     marginLeft: '10px',
@@ -27,13 +45,13 @@ const style = {
 }
 
 function TodoItem({ todo, index, onChange }) {
-const { removeTodo } = useContext(Context)
+  const { removeTodo } = useContext(Context)
 
-const classes = ['todo-title'];
-if (todo.completed) {
-  classes.push('done')
-}
- return(
+  const classes = ['todo-title'];
+  if (todo.completed) {
+    classes.push('done')
+  }
+  return(
    <li style={style.li}>
      <span>
        <input
@@ -46,22 +64,27 @@ if (todo.completed) {
      <span className={classes.join(' ')}>
        {todo.title}
      </span>
-     <span>
+     <span style={{display: 'flex',}}>
+       <button
+         style={style.buttonEdit}
+       >
+         <FontAwesomeIcon icon={faPencilAlt} />
+       </button>
        <button
          style={style.buttonRemove}
          onClick={removeTodo.bind(null, todo.id)}
        >
-         &times;
+         <FontAwesomeIcon icon={faTimes} />
        </button>
      </span>
    </li>
- )
+  )
 }
 
- TodoItem.propTypes = {
-  todo: PropTypes.object.isRequired,
-   index: PropTypes.number,
-   onChange: PropTypes.func.isRequired,
- }
+TodoItem.propTypes = {
+todo: PropTypes.object.isRequired,
+ index: PropTypes.number,
+ onChange: PropTypes.func.isRequired,
+}
 
 export default TodoItem
