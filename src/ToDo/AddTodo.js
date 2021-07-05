@@ -22,9 +22,9 @@ function AddTodo({ onCreate }) {
   const [value, setValue] = useState('');
 
   function submitHandler(event) {
-    event.preventDefault()
+    event.preventDefault();
     if (value.trim()){
-      onCreate(value)
+      onCreate(value);
       setValue('')
     }
   }
@@ -35,7 +35,7 @@ function AddTodo({ onCreate }) {
         className={'form-control'}
         style={style.input}
         value={value}
-        onChange={event => setValue(event.target.value)}
+        onChange={(event) => setValue(event.target.value)}
       />
       <button type="submit" className='btn btn-primary' disabled={!value}>Добавить задачу</button>
     </form>
