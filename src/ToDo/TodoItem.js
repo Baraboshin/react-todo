@@ -42,10 +42,10 @@ const style = {
     borderRadius: '50%',
     cursor: 'pointer',
   }
-}
+};
 
 function TodoItem({ todo, index, onChange }) {
-  const { removeTodo } = useContext(Context)
+  const { removeTodo, markTodoOnEdit } = useContext(Context);
 
   const classes = ['todo-title'];
   if (todo.completed) {
@@ -67,6 +67,7 @@ function TodoItem({ todo, index, onChange }) {
      <span style={{display: 'flex',}}>
        <button
          style={style.buttonEdit}
+         onClick={markTodoOnEdit.bind(null, todo)}
        >
          <FontAwesomeIcon icon={faPencilAlt} />
        </button>

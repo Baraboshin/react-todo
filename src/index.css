@@ -50,14 +50,24 @@ code {
   color: darkgray;
 }
 
+input[type=text] {
+  height: 30px;
+}
 .btn {
+  height: 30px;
   border: 1px solid transparent;
   border-radius: .25rem;
 }
+
 .btn-primary {
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
 }
 .btn-primary:active {
   background-color: #0a58ca;
@@ -67,6 +77,12 @@ code {
   color: #fff;
   pointer-events: none;
   opacity: .65;
+}
+
+.btn-light {
+  color: #000;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
 }
 
 .form-control {
@@ -80,4 +96,8 @@ code {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13 110 253 0.25);
+}
+
+.modal {
+  backgroundColor: rgba(20, 20, 20, 0.9);
 }
