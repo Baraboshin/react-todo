@@ -44,7 +44,7 @@ const style = {
   }
 };
 
-function TodoItem({ todo, index, onChange }) {
+function TodoItem({ todo, onChange }) {
   const { removeTodo, markTodoOnEdit } = useContext(Context);
 
   const classes = ['todo-title'];
@@ -67,13 +67,13 @@ function TodoItem({ todo, index, onChange }) {
      <span style={{display: 'flex',}}>
        <button
          style={style.buttonEdit}
-         onClick={markTodoOnEdit.bind(null, todo)}
+         onClick={() => markTodoOnEdit(todo)}
        >
          <FontAwesomeIcon icon={faPencilAlt} />
        </button>
        <button
          style={style.buttonRemove}
-         onClick={removeTodo.bind(null, todo.id)}
+         onClick={() => removeTodo(todo.id)}
        >
          <FontAwesomeIcon icon={faTimes} />
        </button>
@@ -83,9 +83,8 @@ function TodoItem({ todo, index, onChange }) {
 }
 
 TodoItem.propTypes = {
-todo: PropTypes.object.isRequired,
- index: PropTypes.number,
- onChange: PropTypes.func.isRequired,
+  todo: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default TodoItem

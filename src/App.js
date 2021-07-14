@@ -29,19 +29,20 @@ function App() {
   const [todoEdit, setTodoEdit] = React.useState({});
 
   function markTodoOnEdit(todo) {
-    setTodoEdit(todo)
+    setTodoEdit(todo);
     setInnerTodoEdit(todo)
   }
 
   const [innerTodoEdit, setInnerTodoEdit] = React.useState(todoEdit);
 
   function applyTodoChanges() {
+
     setTodos(todos.map(todo => {
       if (todo.id === innerTodoEdit.id)
         return innerTodoEdit;
       return todo
-    }
-  ));
+    }));
+
     setTodoEdit({});
     setInnerTodoEdit({})
   }
