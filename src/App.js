@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import TodoList from "./ToDo/TodoList";
 import AddTodo from "./ToDo/AddTodo";
 import Context from "./context";
@@ -26,35 +26,35 @@ function App() {
     ]
   );
 
-  const [todoEdit, setTodoEdit] = React.useState({});
-
-  function markTodoOnEdit(todo) {
-    setTodoEdit(todo);
-    setInnerTodoEdit(todo)
-  }
+  const [todoEdit, setTodoEdit] = React.useState({title: ''});
 
   const [innerTodoEdit, setInnerTodoEdit] = React.useState(todoEdit);
+
+  const markTodoOnEdit = useCallback((todo) => {
+    setTodoEdit({...todo});
+    setInnerTodoEdit({...todo});
+  }, []);
 
   function applyTodoChanges() {
 
     setTodos(todos.map(todo => {
       if (todo.id === innerTodoEdit.id)
         return innerTodoEdit;
-      return todo
+      return todo;
     }));
 
-    setTodoEdit({});
-    setInnerTodoEdit({})
+    setTodoEdit({title: ''});
+    setInnerTodoEdit({...todoEdit});
   }
 
   function toggleTodo(id) {
-    setTodos(todos.map(todo => {
-      if (todo.id === id) {
-        todo.completed =!todo.completed;
-      }
-      return todo;
-    }),
-    )
+    const toggleIdxElement = todos.findIndex(todo => todo.id === id);
+    if (toggleIdxElement === -1) {
+      throw new Error('Не удалось найти выбранный элемент')
+    };
+    const newTodos = [...todos];
+    newTodos[toggleIdxElement].completed = !newTodos[toggleIdxElement].completed;
+    setTodos([...newTodos]);
   }
 
   function removeTodo(id) {
@@ -84,7 +84,7 @@ function App() {
         </div>
       </Context.Provider>
       <Modal
-        isOpen={ !_.isEmpty(todoEdit) }
+        isOpen={ !!todoEdit.title }
         ariaHideApp={ false }
         contentLabel="Example Modal"
         style={{
@@ -112,12 +112,12 @@ function App() {
         }}
       >
         <h2 style={{marginTop: '0px',  marginBottom: '20px'}}>Редактирование задачи</h2>
-        {(todoEdit.title) && <input
+         <input
           style={{width: '100%', marginBottom: '20px',}}
           type={'text'}
           value={ innerTodoEdit.title }
           onChange={(event) => setInnerTodoEdit({...innerTodoEdit, title: event.target.value})}
-          />}
+          />
         <div style={{ display: 'flex', justifyContent: 'space-between'}}>
           <button
             onClick={applyTodoChanges}
