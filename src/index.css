@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,91 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #e8e8e8;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.list {
+  width: 50%;
+}
+
+.list header {
+  padding: 10px;
+  margin: 10px 0;
+  background: white;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.list list-empty {
+  padding: 0;
+  margin: 0;
+}
+
+.list header h1 {
+  margin: 0 0 10px 0 ;
+}
+.todo-title {
+  flex-grow: 1;
+  cursor: default;
+  word-break: break-word;
+}
+.done {
+  color: darkgray;
+}
+
+input[type=text] {
+  height: 30px;
+}
+.btn {
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+.btn-primary:active {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+}
+.btn-primary:disabled {
+  color: #fff;
+  pointer-events: none;
+  opacity: .65;
+}
+
+.btn-light {
+  color: #000;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus {
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13 110 253 0.25);
 }
